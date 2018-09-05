@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 class OpenShiftWatcher(object):
     def __init__(self, os_api_endpoint, os_auth_token, os_namespaced, os_namespace, os_api_path, os_api_group, os_api_version, os_resource, ca_trust='/etc/ssl/certs/ca-bundle.trust.crt'):
         ''' os_auth_token generated from `oc whoami -t`
@@ -35,6 +36,7 @@ class OpenShiftWatcher(object):
             if line:
                 try:
                     yield json.loads(line.decode('utf-8'))
+                    print(line.decode('utf-8')
                     # TODO: Use the specific exception type here.
                     # TODO: Logging -> "No Json Object could be decoded."
                 except Exception as e:
